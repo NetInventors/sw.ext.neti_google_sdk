@@ -8,6 +8,9 @@
     "require-dev": {
         "shopware/shopware": "^5.2.6"
     },
+    "config": {
+        "prepend-autoloader": false
+    },
     "license": "MIT License",
     "authors": [
         {

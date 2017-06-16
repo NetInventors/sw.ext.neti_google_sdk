@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- Custom Services -->
+        <service class="NetiGoogleSdk\Service\GoogleSdkFactory" id="neti_google_sdk.service.sdk_factory">
+            <argument>%neti_google_sdk.vendor_dir%</argument>
+        </service>
+    </services>
+</container>
