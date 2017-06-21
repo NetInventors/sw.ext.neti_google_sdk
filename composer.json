@@ -1,0 +1,26 @@
+{
+    "name": "netinventors/google-sdk",
+    "description": "Wrapper plugin for Google API Client PHP Library",
+    "type": "project",
+    "require": {
+        "google/apiclient": "^2.0"
+    },
+    "require-dev": {
+        "shopware/shopware": "^5.2.6"
+    },
+    "config": {
+        "prepend-autoloader": false
+    },
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "Net Inventors GmbH",
+            "email": "info@netinventors.de"
+        },
+        {
+            "name": "Hendrik Rombach",
+            "email": "hr@netinventors.de"
+        }
+    ],
+    "minimum-stability": "stable"
+}
