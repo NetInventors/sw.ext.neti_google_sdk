@@ -22,3 +22,7 @@ crashlytics-build.properties
 fabric.properties
 
 /vendor
+
+/.build/plugins/
+/.build/tmp/
+/.build/update/
