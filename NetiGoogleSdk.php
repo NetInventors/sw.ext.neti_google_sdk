@@ -12,8 +12,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class NetiGoogleSdk extends Plugin
 {
-    const MINIMUM_SDK_VERSION  = "2.0.0";
-    const BREAKING_SDK_VERSION = "2.1.0";
+    public const MINIMUM_SDK_VERSION  = '2.0.0';
+    public const BREAKING_SDK_VERSION = '2.1.0';
 
     public function build(ContainerBuilder $container)
     {
