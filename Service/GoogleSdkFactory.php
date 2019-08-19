@@ -39,9 +39,10 @@ class GoogleSdkFactory
      * @param string|null $cacheKey
      *
      * @return \Google_Client
-     * @throws \NetiGoogleSdk\Exceptions\GoogleSdkFactoryException
+     *
+     * @throws GoogleSdkFactoryException
      */
-    public function getClient($applicationName, $developerKey, array $config = [], $cacheKey = null)
+    public function getClient($applicationName, $developerKey, array $config = [], $cacheKey = null): \Google_Client
     {
         $this->loadLibrary();
 
@@ -50,7 +51,7 @@ class GoogleSdkFactory
             'developer_key'    => $developerKey,
         ];
 
-        $cacheKey = (null === $cacheKey) ? $developerKey : $cacheKey;
+        $cacheKey = $cacheKey ?? $developerKey;
 
         $client = self::$clients[$cacheKey];
 
@@ -63,21 +64,20 @@ class GoogleSdkFactory
 
     /**
      * @return bool
+     *
      * @throws GoogleSdkFactoryException
      */
-    private function loadLibrary()
+    private function loadLibrary(): bool
     {
         if (!class_exists('Google_Client')) {
             require_once $this->vendorPath . '/autoload.php';
-        } else {
-            if (!$this->assertCompatible()) {
-                throw new GoogleSdkFactoryException(
-                    sprintf(
-                        'Loaded Google Client version "%s" is incompatible with required version "%s".',
-                        \Google_Client::LIBVER, NetiGoogleSdk::MINIMUM_SDK_VERSION
-                    )
-                );
-            }
+        } elseif (!$this->assertCompatible()) {
+            throw new GoogleSdkFactoryException(
+                sprintf(
+                    'Loaded Google Client version "%s" is incompatible with required version "%s".',
+                    \Google_Client::LIBVER, NetiGoogleSdk::MINIMUM_SDK_VERSION
+                )
+            );
         }
 
         return true;
@@ -86,7 +86,7 @@ class GoogleSdkFactory
     /**
      * @return bool
      */
-    private function assertCompatible()
+    private function assertCompatible(): bool
     {
         return (
             version_compare(\Google_Client::LIBVER, NetiGoogleSdk::MINIMUM_SDK_VERSION, '>=') &&
